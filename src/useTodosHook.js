@@ -10,11 +10,13 @@ export const useTodosHook = () => {
 
     const onRemove = _id => dispatch({type:TODOS_ACTIONS.REMOVE, _id});
 
+    const onEdit = newTodo => dispatch({type:TODOS_ACTIONS.EDIT, newTodo});
+
     useEffect(() => {
         const todosStringified = JSON.stringify(todos);
         localStorage.setItem('todos', todosStringified);
 
     }, [todos]);
 
-    return { onAdd, onSwitch, onRemove, todos };
+    return { onAdd, onSwitch, onRemove, onEdit, todos };
 }

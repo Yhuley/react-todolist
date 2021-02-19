@@ -1,9 +1,11 @@
 import {v4 as uuidv4} from "uuid";
+import {act} from "@testing-library/react";
 
 export const TODOS_ACTIONS = {
     ADD: 'add',
     COMPLETE: 'complete',
-    REMOVE: 'remove'
+    REMOVE: 'remove',
+    EDIT: 'edit'
 }
 
 export const initialState = () => {
@@ -31,6 +33,12 @@ export const todosReducer = (todos, action) => {
             )
         case TODOS_ACTIONS.REMOVE:
             return todos.filter(todo => action._id !== todo._id)
+        case TODOS_ACTIONS.EDIT:
+            return todos.map(
+                todo =>
+                    todo._id === action.newTodo._id ?
+                        action.newTodo
+                        : todo)
         default:
             throw new Error();
     }

@@ -5,7 +5,7 @@ import {ToDoItem} from "./components/ToDoItem";
 import {useTodosHook} from "./useTodosHook";
 
 export const App = () => {
-    const  { onAdd, onSwitch, onRemove, todos } = useTodosHook();
+    const  { onAdd, onSwitch, onRemove, todos, onEdit } = useTodosHook();
 
     return (
         <div className="application">
@@ -18,6 +18,7 @@ export const App = () => {
                         {...{ todo }}
                         {...{ onSwitch }}
                         {...{ onRemove }}
+                        {...{ onEdit }}
                     />)}
             </div>
         </div>
